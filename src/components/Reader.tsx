@@ -88,7 +88,7 @@ export default () => {
                     </Grid>
                     <Grid item xs={12}>
                         <Paper>
-                            <pre>{result}</pre>
+                            <pre>{JSON.stringify(result)}</pre>
                         </Paper>
                     </Grid>
                 </Grid>
