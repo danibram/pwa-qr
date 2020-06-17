@@ -87,7 +87,9 @@ export default () => {
                         <Button onClick={scan}>Scan</Button>
                     </Grid>
                     <Grid item xs={12}>
-                        <Paper>
+                        <Paper
+                            style={{ zIndex: 99999999999999999999999999999 }}
+                        >
                             <pre>{JSON.stringify(result)}</pre>
                         </Paper>
                     </Grid>
