@@ -1,4 +1,12 @@
-import { Button, Grid, MenuItem, Paper, Select } from "@material-ui/core";
+import {
+    Box,
+    Button,
+    Container,
+    Grid,
+    MenuItem,
+    Paper,
+    Select,
+} from "@material-ui/core";
 import * as ZXing from "@zxing/library";
 import React, { useEffect, useState } from "react";
 
@@ -46,42 +54,49 @@ export default () => {
 
     return (
         <>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <video
-                        id="video"
-                        style={{
-                            width: "100%",
-                        }}
-                    ></video>
-                </Grid>
-                <Grid item xs={12}>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        onChange={handleChange}
-                        value={device}
-                    >
-                        {devices.map((d, i) => (
-                            <MenuItem key={d.deviceId} value={d.deviceId}>
-                                {d.label}
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </Grid>
-                <Grid item xs={12}>
-                    <Button onClick={scan}>Scan</Button>
-                </Grid>
-                <Grid item xs={12}>
-                    <Paper
-                        style={{
-                            zIndex: 99999999999999999999999999999,
-                        }}
-                    >
-                        <pre>{JSON.stringify(result)}</pre>
-                    </Paper>
-                </Grid>
-            </Grid>
+            <Container maxWidth="sm">
+                <Box my={4}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12}>
+                            <video
+                                id="video"
+                                style={{
+                                    width: "100%",
+                                }}
+                            ></video>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                onChange={handleChange}
+                                value={device}
+                            >
+                                {devices.map((d, i) => (
+                                    <MenuItem
+                                        key={d.deviceId}
+                                        value={d.deviceId}
+                                    >
+                                        {d.label}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Button onClick={scan}>Scan</Button>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Paper
+                                style={{
+                                    zIndex: 99999999999999999999999999999,
+                                }}
+                            >
+                                <pre>{JSON.stringify(result)}</pre>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                </Box>
+            </Container>
         </>
     );
 };
