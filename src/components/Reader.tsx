@@ -1,20 +1,39 @@
-import { Box, Container, Grid, MenuItem, Select } from "@material-ui/core";
+import {
+    Box,
+    Button,
+    Container,
+    Grid,
+    MenuItem,
+    Paper,
+    Select,
+} from "@material-ui/core";
 import * as ZXing from "@zxing/library";
 import React, { useEffect, useState } from "react";
 
 export default () => {
     let [devices, setDevices] = useState([]);
     let [device, setDevice] = useState("");
+    let [result, setResult] = useState({});
 
     const codeReader = new ZXing.BrowserQRCodeReader();
 
     const handleChange = (event) => {
         console.log(event.target.value);
         setDevice(event.target.value);
+    };
+
+    const scan = (event) => {
         codeReader
-            .decodeOnceFromVideoDevice(event.target.value, "video")
-            .then((result) => console.log(result.text))
-            .catch((err) => console.error(err));
+            .decodeOnceFromVideoDevice(device, "video")
+            .then((result) => {
+                console.log(result);
+                setResult(result);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+
+        console.log(`Started continous decode from camera with id ${device}`);
     };
 
     useEffect(() => {
@@ -63,6 +82,14 @@ export default () => {
                                 </MenuItem>
                             ))}
                         </Select>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button onClick={scan}>Scan</Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Paper>
+                            <pre>{result}</pre>
+                        </Paper>
                     </Grid>
                 </Grid>
             </Box>
