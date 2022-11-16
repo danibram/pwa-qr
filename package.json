@@ -14,7 +14,7 @@
         "@material-ui/lab": "^4.0.0-alpha.53",
         "@material-ui/pickers": "^3.2.10",
         "@material-ui/types": "^5.1.0",
-        "@mdx-js/loader": "^1.6.5",
+        "@mdx-js/loader": "^2.1.5",
         "@mdx-js/react": "^1.6.5",
         "@mdx-js/runtime": "^1.6.5",
         "@mdx-js/tag": "^0.20.3",
